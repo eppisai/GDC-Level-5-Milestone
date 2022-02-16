@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>
+            Tasks
+        </title>
+    </head>
+    <body>
+        <div class="flex items-center justify-center h-screen">
+            <div class="p-4">
+                <div class="font-black text-3xl">
+                    Task Manager
+                </div>
+           
+              <form class="w-full mt-8 max-w-sm flex items-center border-b border-blue-500 py-2" action="../add-task/" method="get">
+                  <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" name="task" placeholder="What are you planning to do?" aria-label="Task">
+                  <input type="submit" value="Add Task" class="flex-shrink-0 bg-blue-500  border-blue-500 text-sm border-4 text-white py-1 px-2 rounded cursor-pointer">
+              </form>
+          
+                <h2 class="font-medium leading-tight text-2xl mt-8 mb-2 text-blue-600">Current Tasks </h2>
+                <br>
+                {% for task in tasks %}
+                    <div class="rounded border border-dashed p-3 flex justify-between items-center mb-1">
+                        {{forloop.counter}}. &nbsp; {{task}}
+                        <div>
+                            <a href="../complete_task/{{forloop.counter}}" class="text-blue-400 ml-3">
+                                Done
+                            </a>
+                            <a href="../delete-task/{{forloop.counter}}" class="text-blue-400 ml-3">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <br>
+                {% endfor %}
+                <br>
+               <ul class="flex">
+                    <li class="mr-3">
+                        <a class="inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white" href="../tasks">Add Task</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white" href="../completed_tasks">Completed Tasks</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white" href="../all_tasks">All Tasks</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        
+        
+    </body>
+</html>
